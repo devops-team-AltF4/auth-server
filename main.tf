@@ -6,7 +6,7 @@ terraform {
     }
   }
 
-  required_version = ">= 1.1.0"
+  required_version = ">= 0.14.9"
 
   cloud {
     organization = "pj4terraform"

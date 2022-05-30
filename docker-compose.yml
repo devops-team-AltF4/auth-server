@@ -1,0 +1,32 @@
+version: '3'
+services:
+  node-app:
+    image: gch03717/auth-server:3.2
+    ports:
+      - "3005:3005"
+    networks:
+      - web-net
+    # environment:
+    #   - redis_url=value
+    # logging:
+    #   driver: awslogs
+    #   options: 
+    #     awslogs-group: ec2-tutorial
+    #     awslogs-region: ap-northeast-2
+    #     awslogs-stream-prefix: auth
+
+  redis-server:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - web-net
+    # logging:
+    #   driver: awslogs
+    #   options: 
+    #     awslogs-group: ec2-tutorial
+    #     awslogs-region: ap-northeast-2
+    #     awslogs-stream-prefix: redis
+networks:
+  web-net:
+    driver: bridge

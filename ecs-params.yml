@@ -1,0 +1,10 @@
+version: 1
+task_definition:
+  services:
+    node-app:
+      cpu_shares: 100
+      mem_limit: 524288000
+
+    redis-server:
+      cpu_shares: 100
+      mem_limit: 524288000

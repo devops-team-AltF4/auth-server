@@ -15,7 +15,7 @@ jobs:
     default :
       run :
         shell : bash
-        working-derectory : terraform
+        working-derectory : ../../terraform
 
     steps:
       - name: Checkout

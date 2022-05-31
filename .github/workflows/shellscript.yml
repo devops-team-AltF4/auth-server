@@ -4,6 +4,8 @@ name: auth-server
 on:
 # push나 pull request가 일어나면 동작하도록 구현
  [push, pull_request]
+    branches:
+      - dev
 
 # 워크플로우에서 실행할 job
 jobs:
@@ -27,6 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: marocchino/setup-ecs-cli@v1
+      - uses: docker/build-push-action@v2
         with:
           version: "v1.18.0"
       - name: ecs service
@@ -36,19 +39,4 @@ jobs:
           ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-devterr --ecs-profile project4-devterr --vpc vpc-0df90a1ab0fc11825 --security-group sg-07da5f154b06ec072 --subnets subnet-017da35bd76404302,subnet-0f2478bfa3bd03b9b --region ap-northeast-2
           ecs-cli compose service up --cluster-config project4-devterr --ecs-profile project4-devterr --target-groups "targetGroupArn=arn:aws:elasticloadbalancing:ap-northeast-2:060701521359:targetgroup/dev-app-dev-tg2/a684b396dda35c01,containerName=node-app,containerPort=3005" --vpc vpc-0df90a1ab0fc11825
 
-  # auth-server3:
-  #   # job이 돌아갈 환경
-  #   needs: auth-server2
-  #   runs-on: ubuntu-latest
-
-  #   # job에서 동작할 task들의 모음
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: marocchino/setup-ecs-cli@v1
-  #       with:
-  #         version: "v1.18.0"
-  #     - name: ec2
-  #       run: |  
-  #         ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-devterr --ecs-profile project4-devterr --vpc vpc-0df90a1ab0fc11825 --security-group sg-07da5f154b06ec072 --subnets subnet-017da35bd76404302,subnet-0f2478bfa3bd03b9b --region ap-northeast-2
-  #         ecs-cli compose service up --cluster-config project4-devterr --ecs-profile project4-devterr --target-groups "targetGroupArn=arn:aws:elasticloadbalancing:ap-northeast-2:060701521359:targetgroup/dev-app-dev-tg2/a684b396dda35c01,containerName=node-app,containerPort=3005" --vpc vpc-0df90a1ab0fc11825
-
+  

@@ -30,8 +30,8 @@ jobs:
   auth-server2:
     # job이 돌아갈 환경
     # needs: auth-server1
-    need: auth-server1
     runs-on: ubuntu-latest
+    needs: auth-server1
 
     # job에서 동작할 task들의 모음
     steps:

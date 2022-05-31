@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - env:
-          VERSION: "latest"
-        run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/marocchino/setup-ecs-cli/v1/entrypoint.sh)"
-
+      - uses: marocchino/setup-ecs-cli@v1
+        with:
+          version: "v1.18.0"
+          
   auth-server2:
     # job이 돌아갈 환경
     needs: auth-server1

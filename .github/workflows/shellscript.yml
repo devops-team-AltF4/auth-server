@@ -18,6 +18,10 @@ jobs:
           VERSION: "latest"
         run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/marocchino/setup-ecs-cli/v1/entrypoint.sh)"
 
+  auth-server2:
+    # job이 돌아갈 환경
+    needs: auth-server1
+    runs-on: ubuntu-latest
 
     # job에서 동작할 task들의 모음
     steps:
@@ -27,9 +31,9 @@ jobs:
           ecs-cli configure --cluster project4-devterr --default-launch-type EC2 --config-name project4-devterr --region ap-northeast-2
           ecs-cli configure profile --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile-name project4-devterr
   
-  auth-server2:
+  auth-server3:
     # job이 돌아갈 환경
-    needs: auth-server1
+    needs: auth-server2
     runs-on: ubuntu-latest
 
     # job에서 동작할 task들의 모음

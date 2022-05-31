@@ -26,3 +26,4 @@ jobs:
       - name: ecs service
         run: |
           echo ecs-cli configure --cluster project4-devterr --default-launch-type EC2 --config-name project4-devterr --region ap-northeast-2
+          echo ecs-cli configure profile --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile-name project4-devterr

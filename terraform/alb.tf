@@ -70,7 +70,7 @@ resource "aws_security_group" "load_balancer_security_group" {
 }
 
 resource "aws_lb_target_group" "target_group" {
-  name        = "${var.app_name}-${var.app_environment}-tg"
+  name        = "${var.app_name}-${var.app_environment}-tg2"
   port        = 80
   protocol    = "HTTP"
   target_type = "instance"

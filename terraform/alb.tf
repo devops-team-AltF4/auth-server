@@ -69,6 +69,41 @@ resource "aws_security_group" "load_balancer_security_group" {
   }
 }
 
+resource "aws_lb_target_group" "target_group" {
+  name        = "${var.app_name}-${var.app_environment}-tg"
+  port        = 80
+  protocol    = "HTTP"
+  target_type = "instance"
+  vpc_id      = aws_vpc.aws-vpc.id
+
+  health_check {
+    port                = "80"
+    healthy_threshold   = "3"
+    interval            = "300"
+    protocol            = "HTTP"
+    matcher             = "200"
+    timeout             = "3"
+    path                = "/"
+    unhealthy_threshold = "2"
+  }
+
+  tags = {
+    Name        = "${var.app_name}-lb-tg"
+    Environment = var.app_environment
+  }
+}
+
+resource "aws_lb_listener" "listener" {
+  load_balancer_arn = aws_alb.application_load_balancer.id
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.target_group.id
+  }
+}
+
 resource "aws_lb_target_group" "target_group2" {
   name        = "${var.app_name}-${var.app_environment}-tg2"
   port        = 80
@@ -100,8 +135,7 @@ resource "aws_lb_listener" "listener2" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.target_group.id
+    target_group_arn = aws_lb_target_group.target_group2.id
   }
-
 
 }

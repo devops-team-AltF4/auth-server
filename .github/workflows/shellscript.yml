@@ -8,7 +8,7 @@ on:
 # 워크플로우에서 실행할 job
 jobs:
   # job의 이름
-  auth-server:
+  auth-server1:
     # job이 돌아갈 환경
     runs-on: ubuntu-latest
 
@@ -27,7 +27,23 @@ jobs:
         run: |
           ecs-cli configure --cluster project4-devterr --default-launch-type EC2 --config-name project4-devterr --region ap-northeast-2
           ecs-cli configure profile --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile-name project4-devterr
+  
+  auth-server2:
+    # job이 돌아갈 환경
+    needs: auth-server1
+    runs-on: ubuntu-latest
 
+    # job에서 동작할 task들의 모음
+    steps:
+      # 오픈소스 커뮤니티의 액션을 사용할 것을 명시
+      # 이 액션은 로컬 리포지토리의 환경을 러너로 복사하는 액션
+      - uses: actions/checkout@v2
+
+      # task의 이름과 동작시킬 스크립트(한줄짜리)
+      # - name: Run a one-line script
+      #   run: echo Hello, world!
+
+      # task의 이름과 동작시킬 스크립트(두줄 이상)
       - name: ec2
         run: |  
           ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-devterr --ecs-profile project4-devterr --vpc vpc-0df90a1ab0fc11825 --security-group sg-07da5f154b06ec072 --subnets subnet-017da35bd76404302,subnet-0f2478bfa3bd03b9b

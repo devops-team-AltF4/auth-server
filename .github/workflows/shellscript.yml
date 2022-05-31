@@ -1,0 +1,28 @@
+name: auth-server
+
+# 워크플로우가 트리거 될 이벤트들 명시
+on:
+# push나 pull request가 일어나면 동작하도록 구현
+ [push, pull_request]
+
+# 워크플로우에서 실행할 job
+jobs:
+  # job의 이름
+  auth-server:
+    # job이 돌아갈 환경
+    runs-on: ubuntu-latest
+
+    # job에서 동작할 task들의 모음
+    steps:
+      # 오픈소스 커뮤니티의 액션을 사용할 것을 명시
+      # 이 액션은 로컬 리포지토리의 환경을 러너로 복사하는 액션
+      - uses: actions/checkout@v2
+
+      # task의 이름과 동작시킬 스크립트(한줄짜리)
+      # - name: Run a one-line script
+      #   run: echo Hello, world!
+
+      # task의 이름과 동작시킬 스크립트(두줄 이상)
+      - name: ecs service
+        run: |
+          echo ecs-cli configure --cluster project4-devterr --default-launch-type EC2 --config-name project4-devterr --region ap-northeast-2

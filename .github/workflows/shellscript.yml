@@ -4,8 +4,6 @@ name: auth-server
 on:
 # push나 pull request가 일어나면 동작하도록 구현
  [push, pull_request]
-    branches:
-      - dev
 
 # 워크플로우에서 실행할 job
 jobs:

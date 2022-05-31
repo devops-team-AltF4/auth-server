@@ -17,7 +17,7 @@ jobs:
       - uses: marocchino/setup-ecs-cli@v1
         with:
           version: "v1.18.0"
-          
+
   auth-server2:
     # job이 돌아갈 환경
     needs: auth-server1
@@ -26,6 +26,9 @@ jobs:
     # job에서 동작할 task들의 모음
     steps:
       - uses: actions/checkout@v2
+      - uses: marocchino/setup-ecs-cli@v1
+        with:
+          version: "v1.18.0"
       - name: ecs service
         run: |
           ecs-cli configure --cluster project4-devterr --default-launch-type EC2 --config-name project4-devterr --region ap-northeast-2
@@ -39,6 +42,9 @@ jobs:
     # job에서 동작할 task들의 모음
     steps:
       - uses: actions/checkout@v2
+      - uses: marocchino/setup-ecs-cli@v1
+        with:
+          version: "v1.18.0"
       - name: ec2
         run: |  
           ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-devterr --ecs-profile project4-devterr --vpc vpc-0df90a1ab0fc11825 --security-group sg-07da5f154b06ec072 --subnets subnet-017da35bd76404302,subnet-0f2478bfa3bd03b9b

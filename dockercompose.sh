@@ -12,4 +12,5 @@
 
 # 삭제 명령어
 # ecs-cli compose service rm --cluster-config project4-devterr --ecs-profile project4-devterr
+# ecs-cli compose down --cluster-config project4-devterr --ecs-profile project4-devterr
 # ecs-cli down --force --cluster-config project4-devterr --ecs-profile project4-devterr

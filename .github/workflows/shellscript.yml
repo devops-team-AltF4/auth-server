@@ -7,21 +7,17 @@ on:
 
 # 워크플로우에서 실행할 job
 jobs:
-  ecs-cli:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - env:
-          VERSION: "latest"
-      - name: ecs-cli
-        run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/marocchino/setup-ecs-cli/v1/entrypoint.sh)"
-
   # job의 이름
   auth-server1:
     # job이 돌아갈 환경
-    needs: ecs-cli
     runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - env:
+          VERSION: "latest"
+        run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/marocchino/setup-ecs-cli/v1/entrypoint.sh)"
+
 
     # job에서 동작할 task들의 모음
     steps:

@@ -20,8 +20,6 @@ jobs:
       - uses: marocchino/setup-ecs-cli@v1
         with:
           version: "v1.18.0"
-      - uses: ./docker-compose.yml
-      - uses: ./ecs-params.yml
       - name: ecs service
         run: |
           ecs-cli configure --cluster project4-devterr --default-launch-type EC2 --config-name project4-devterr --region ap-northeast-2

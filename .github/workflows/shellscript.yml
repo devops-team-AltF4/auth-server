@@ -18,7 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: marocchino/setup-ecs-cli@v1
-      - uses: devops-team-AltF4/auth-server
         with:
           version: "v1.18.0"
       - name: ecs service

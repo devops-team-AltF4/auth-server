@@ -69,7 +69,7 @@ resource "aws_security_group" "load_balancer_security_group" {
   }
 }
 
-resource "aws_lb_target_group" "target_group" {
+resource "aws_lb_target_group" "target_group2" {
   name        = "${var.app_name}-${var.app_environment}-tg2"
   port        = 80
   protocol    = "HTTP"
@@ -88,12 +88,12 @@ resource "aws_lb_target_group" "target_group" {
   }
 
   tags = {
-    Name        = "${var.app_name}-lb-tg"
+    Name        = "${var.app_name}-lb-tg2"
     Environment = var.app_environment
   }
 }
 
-resource "aws_lb_listener" "listener" {
+resource "aws_lb_listener" "listener2" {
   load_balancer_arn = aws_alb.application_load_balancer.id
   port              = "3005"
   protocol          = "HTTP"

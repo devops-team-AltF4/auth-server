@@ -33,6 +33,14 @@ resource "aws_security_group" "load_balancer_security_group" {
   }
 
   ingress {
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
     from_port        = 3005
     to_port          = 3005
     protocol         = "tcp"
@@ -69,12 +77,13 @@ resource "aws_lb_target_group" "target_group" {
   vpc_id      = aws_vpc.aws-vpc.id
 
   health_check {
+    port                = "3005"
     healthy_threshold   = "3"
     interval            = "300"
     protocol            = "HTTP"
-    matcher             = "404"
+    matcher             = "200"
     timeout             = "3"
-    path                = "/"
+    path                = "/auth"
     unhealthy_threshold = "2"
   }
 

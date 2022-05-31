@@ -26,5 +26,4 @@ jobs:
           ecs-cli configure profile --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile-name project4-devterr
           ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-devterr --ecs-profile project4-devterr --vpc vpc-0e5396ed9cc3ae48c --security-group sg-098d956e568fda953 --subnets subnet-057a319cd0a0fd0d0,subnet-0fb9e41432ec73fe9 --region ap-northeast-2
           ecs-cli compose up --create-log-groups --cluster-config project4-devterr --ecs-profile project4-devterr --force-update
-          ecs-cli compose down --cluster-config project4-devterr --ecs-profile project4-devterr
-          ecs-cli compose service up --cluster-config project4-devterr --ecs-profile project4-devterr --file docker-compose.yml --ecs-params ecs-params.yml --target-groups "targetGroupArn=arn:aws:elasticloadbalancing:ap-northeast-2:060701521359:targetgroup/dev-app-dev-tg2/509b951524217429,containerName=node-app,containerPort=3005" --vpc vpc-0e5396ed9cc3ae48c
+          

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # 도커 빌드 푸쉬 명령어
 # aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 060701521359.dkr.ecr.ap-northeast-2.amazonaws.com
 # docker build --platform linux/amd64 -t pj4-auth .
@@ -11,6 +13,6 @@ ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medi
 ecs-cli compose service up --cluster-config project4-devterr --ecs-profile project4-devterr --target-groups "targetGroupArn=arn:aws:elasticloadbalancing:ap-northeast-2:060701521359:targetgroup/dev-app-dev-tg2/a684b396dda35c01,containerName=node-app,containerPort=3005" --vpc vpc-0df90a1ab0fc11825
 
 # 삭제 명령어
-# ecs-cli compose service rm --cluster-config project4-devterr --ecs-profile project4-devterr
-# ecs-cli compose down --cluster-config project4-devterr --ecs-profile project4-devterr
-# ecs-cli down --force --cluster-config project4-devterr --ecs-profile project4-devterr
+ecs-cli compose down --cluster-config project4-devterr --ecs-profile project4-devterr
+ecs-cli compose service rm --cluster-config project4-devterr --ecs-profile project4-devterr
+ecs-cli down --force --cluster-config project4-devterr --ecs-profile project4-devterr

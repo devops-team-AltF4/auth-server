@@ -4,6 +4,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const port = 3005;
 
+const cors = require('cors');
+
+let corsOptions = {
+  origin: "*", // 출처 허용 옵션
+
+  credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+};
+
+
+
 
 
 const redis_client = new Redis({
@@ -13,6 +23,8 @@ const redis_client = new Redis({
 
 
 const app = express();
+
+app.use(cors(corsOptions));
 
   // Body Parser 미들웨어
 app.use(bodyParser.urlencoded({extended: false}));

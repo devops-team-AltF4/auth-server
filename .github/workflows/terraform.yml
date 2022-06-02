@@ -102,8 +102,6 @@ jobs:
         run: |
           ecs-cli configure --cluster project4-dev --default-launch-type EC2 --config-name project4-dev --region ap-northeast-2
           ecs-cli configure profile --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile-name project4-dev
-          # ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-dev --ecs-profile project4-dev --vpc vpc-0e5396ed9cc3ae48c --security-group sg-098d956e568fda953 --subnets subnet-057a319cd0a0fd0d0,subnet-0fb9e41432ec73fe9 --region ap-northeast-2
-          # ecs-cli compose up --cluster-config project4-dev --ecs-profile project4-dev --cluster project4-dev --launch-type EC2 --force-update
+          # ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-dev --ecs-profile project4-dev --vpc ${{ secrets.AWS_VPC }} --security-group ${{ secrets.AWS_SECURITY_GROUP }} --subnets ${{ secrets.AWS_SUBNETS_1 }},${{ secrets.AWS_SUBNETS_2 }} --region ap-northeast-2
           ecs-cli compose service up --cluster-config project4-dev --ecs-profile project4-dev --target-group-arn arn:aws:elasticloadbalancing:ap-northeast-2:060701521359:targetgroup/dev-app-dev-tg2/509b951524217429 --container-name node-app --container-port 3005 --vpc vpc-0e5396ed9cc3ae48c --launch-type EC2 --force-deployment
-          # ecs-cli compose up --cluster-config project4-dev --ecs-profile project4-dev --cluster project4-dev --launch-type EC2 --force-update
           

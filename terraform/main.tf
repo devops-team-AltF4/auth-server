@@ -15,12 +15,10 @@ terraform {
       name = "devcloud"
     }
   }
-
-
 }
 
 provider "aws" {
-  region  = "ap-northeast-2"
+  region = "ap-northeast-2"
 }
 
 output "vpc_id" {

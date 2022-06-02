@@ -23,7 +23,7 @@
 variable "aws_region" {
   type        = string
   description = "AWS Region"
-  default = "ap-northeast-2"
+  default     = "ap-northeast-2"
 }
 
 variable "aws_cloudwatch_retention_in_days" {
@@ -35,13 +35,13 @@ variable "aws_cloudwatch_retention_in_days" {
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default = "dev-app"
+  default     = "dev-app"
 }
 
 variable "app_environment" {
   type        = string
   description = "Application Environment"
-  default = "dev"
+  default     = "dev"
 }
 
 variable "cidr" {
@@ -51,15 +51,15 @@ variable "cidr" {
 
 variable "public_subnets" {
   description = "List of public subnets"
-  default = ["10.10.100.0/24", "10.10.101.0/24"]
+  default     = ["10.10.100.0/24", "10.10.101.0/24"]
 }
 
 variable "private_subnets" {
   description = "List of private subnets"
-  default = ["10.10.0.0/24", "10.10.1.0/24"]
+  default     = ["10.10.0.0/24", "10.10.1.0/24"]
 }
 
 variable "availability_zones" {
   description = "List of availability zones"
-  default = ["ap-northeast-2a", "ap-northeast-2b"]
+  default     = ["ap-northeast-2a", "ap-northeast-2b"]
 }

@@ -103,7 +103,18 @@ resource "aws_lb_listener" "listener" {
     target_group_arn = aws_lb_target_group.target_group.id
   }
 }
+resource "aws_lb_listener" "listener3" {
+  load_balancer_arn = aws_alb.application_load_balancer.id
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = "arn:aws:acm:ap-northeast-2:060701521359:certificate/104f70c8-4cbb-4873-aed9-eb9bfbeeb021"
 
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.target_group.arn
+  }
+}
 resource "aws_lb_target_group" "target_group2" {
   name        = "${var.app_name}-${var.app_environment}-tg2"
   port        = 80

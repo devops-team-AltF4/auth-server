@@ -4,7 +4,7 @@
 
 ## 시스템 아키텍쳐
 
-## 배포파이프라인
+## 배포 파이프라인
 
 ## getting started
 사전 과제 ex docker

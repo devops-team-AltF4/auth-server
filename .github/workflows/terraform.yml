@@ -90,7 +90,7 @@ jobs:
     defaults :
       run :
         shell : bash
-        working-directory : docker-compose/
+        working-directory : dockercompose/
 
     # job에서 동작할 task들의 모음
     steps:

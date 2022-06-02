@@ -9,7 +9,7 @@
 #ecs 올리는 명령어 
 # ecs-cli configure --cluster project4-dev --default-launch-type EC2 --config-name project4-dev --region ap-northeast-2
 # ecs-cli configure profile --access-key FILL_ME_IN --secret-key FILL_ME_IN --profile-name project4-dev
-ecs-cli up --keypair projectju --capability-iam --size 2 --instance-type t2.medium --cluster-config project4-dev --ecs-profile project4-dev --vpc vpc-0e5396ed9cc3ae48c --security-group sg-098d956e568fda953 --subnets subnet-057a319cd0a0fd0d0,subnet-0fb9e41432ec73fe9
+ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-dev --ecs-profile project4-dev --vpc vpc-0e5396ed9cc3ae48c --security-group sg-098d956e568fda953 --subnets subnet-057a319cd0a0fd0d0,subnet-0fb9e41432ec73fe9
 ecs-cli compose service up --cluster-config project4-dev --ecs-profile project4-dev --target-groups "targetGroupArn=arn:aws:elasticloadbalancing:ap-northeast-2:060701521359:targetgroup/dev-app-dev-tg2/509b951524217429,containerName=node-app,containerPort=3005" --vpc vpc-0e5396ed9cc3ae48c
 
 # 삭제 명령어

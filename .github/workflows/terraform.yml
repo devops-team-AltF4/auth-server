@@ -81,3 +81,26 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
+
+  auth-server:
+    # job이 돌아갈 환경
+    # needs: auth-server1
+    runs-on: ubuntu-latest
+    needs: terraform
+    defaults :
+      run :
+        shell : bash
+        working-directory : auth-server/
+
+    # job에서 동작할 task들의 모음
+    steps:
+      - uses: actions/checkout@v2
+      - uses: marocchino/setup-ecs-cli@v1
+        with:
+          version: "v1.18.0"
+      - name: ecs service
+        run: |
+          ecs-cli configure --cluster project4-dev --default-launch-type EC2 --config-name project4-dev --region ap-northeast-2
+          ecs-cli configure profile --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile-name project4-dev
+          # ecs-cli up --keypair projectju --capability-iam --size 1 --instance-type t2.medium --cluster-config project4-dev --ecs-profile project4-dev --vpc ${{ secrets.AWS_VPC }} --security-group ${{ secrets.AWS_SECURITY_GROUP }} --subnets ${{ secrets.AWS_SUBNETS_1 }},${{ secrets.AWS_SUBNETS_2 }} --region ap-northeast-2
+          ecs-cli compose service up --cluster-config project4-dev --ecs-profile project4-dev --target-group-arn ${{ secrets.AWS_TARGET_GROUP_ARN }} --container-name node-app --container-port 3005 --vpc ${{ secrets.AWS_VPC }} --launch-type EC2 --force-deployment

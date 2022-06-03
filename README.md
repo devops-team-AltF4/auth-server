@@ -35,21 +35,23 @@ Git repository의 소스코드 CI / CD 기존의 파이프 라인을 병목현�
 VPC, subnet, ALB, tagetgroup, RDS 등 인프라 구축
 
 ## 명령어
+
+#### ecs-cli 사용
 **local 환경에서 ecs-cli 사용법**
-ecscli-value.sh를 실행 시킨다
+- ecscli-value.sh를 실행 시킨다
 ecs-cli.sh에 필요한 부분을 주석처리를 해제하고 FILL_ME_IN 부분을 ecscli-value를 참고하여 수정해서 사용
 
 **git action을 이용한 ecs-cli 배포**
-첫 인프라 구성에 한해 Terraform에서 생성된 리소스를 ecscli-value이나 terrform oupput을 확인하여 (AWS_SECURITY_GROUP, AWS_SUBNETS_1, AWS_SUBNETS_2, AWS_TARGET_GROUP_ARN,AWS_VPC)  Git Actions secrets의 환경변수를 업데이트 하여 사용해주셔야함
+- 첫 인프라 구성에 한해 Terraform에서 생성된 리소스를 ecscli-value이나 terrform oupput을 확인하여 (AWS_SECURITY_GROUP, AWS_SUBNETS_1, AWS_SUBNETS_2, AWS_TARGET_GROUP_ARN,AWS_VPC)  Git Actions secrets의 환경변수를 업데이트 하여 사용해주셔야함
 
 
 ec2 사용자 권한 주는 순서
 
 
 
-eks 권한 주는 순서
+eks 권한 주는 순서 <br/>
 블로그 참고
-https://mtou.tistory.com/132
+- https://mtou.tistory.com/132
 
 
 ## OutPut

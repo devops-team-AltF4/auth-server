@@ -1,13 +1,16 @@
 # auth-server
 
 ## 프로젝트 목표
-
+**목표**
+Git repository의 소스코드 CI / CD 기존의 파이프 라인을 병목현상이 발생하는 곳들을 분석하여 그 과정에서 필요하다고 생각하는 부분을 크게 3가지로 나눌 수 있었습니다. 특히 auth-server repository 에서는 인프라 구축의 자동화와 앱 애플리케이션 배포 자동화에 초점을 두었고 그런 부분들을 IaC tool로서 선택한 스택으로 Terraform과 ECS-CLI, EKS-CLI 등을 Git action과 연동시켜 repository의 변화를 즉각적으로 배포할 수 있도록 구성하였습니다. 새로운 빌드 이미지 Build & Push 과정은 Git action이나 ECS로 실행 시 푸쉬가 적용이 되며 git action의 결과를 Slack으로 알 수 있도록 설계했습니다.  
 ## 시스템 아키텍쳐
+![SA](https://user-images.githubusercontent.com/98368480/171760930-75b19efc-68b0-4fd4-92a1-290d2034625c.png)
 
 ## 배포 파이프라인
+![백엔드, 2022-06-02 23-52-32](https://user-images.githubusercontent.com/98368480/171760373-27ded2ff-8c24-4904-9773-8e83add37391.png)
 
 ## getting started
-사전 과제 ex docker
+사전 과제 docker, kubernetes 구조의 이해
 
 
 ## 환경별 기능

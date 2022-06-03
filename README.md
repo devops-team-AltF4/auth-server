@@ -12,9 +12,11 @@ Git repository의 소스코드 CI / CD 기존의 파이프 라인을 병목현�
 
 ## 배포 파이프라인
 ![백엔드, 2022-06-02 23-52-32](https://user-images.githubusercontent.com/98368480/171760373-27ded2ff-8c24-4904-9773-8e83add37391.png)
+인프라 구축 -> ecscli 클러스터 생성, 서비스 생성
 
 ## getting started
-사전 과제 docker, kubernetes 구조의 이해
+esc-cli 설치
+공식 문서 참고 https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/ECS_CLI_installation.html
 
 
 ## 환경별 기능
@@ -46,7 +48,7 @@ ecs-cli.sh에 필요한 부분을 주석처리를 해제하고 FILL_ME_IN 부분
 
 
 ec2 사용자 권한 주는 순서
-
+??
 
 
 eks 권한 주는 순서 <br/>

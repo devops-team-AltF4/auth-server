@@ -1,4 +1,4 @@
-# auth-server
+# Auth-server
 
 ## 프로젝트 목표
 **목표**

@@ -56,7 +56,7 @@ eks 권한 주는 순서 <br/>
 
 ## OutPut
 dev환경 
-http://api.dev-altf4.click:3005/auth
+http://api.devops-altf4.click:3005/auth
 <img width="818" alt="스크린샷 2022-06-03 오전 10 54 42" src="https://user-images.githubusercontent.com/50437623/171771699-b174ee59-3525-4491-a192-94579d3fd41c.png">
 
 staging환경
@@ -64,6 +64,7 @@ https://eks.devops-altf4.click/auth
 <img width="818" alt="스크린샷 2022-06-03 오전 10 54 42" src="https://user-images.githubusercontent.com/50437623/171771833-f9632876-77f2-4e01-b269-5d7085410fd5.png">
 
 front에서 visits를 들어가서 확인한 화면
+https://staging.devops-altf4.click/
 <img width="1332" alt="스크린샷 2022-06-03 오전 10 48 58" src="https://user-images.githubusercontent.com/50437623/171771236-8b7fc52d-3132-4175-ba4b-e78751367390.png">
 
 

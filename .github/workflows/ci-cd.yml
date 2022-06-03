@@ -91,7 +91,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t --platform linux/amd64 dev-auth .
+        docker build -t dev-auth .
         docker tag dev-auth:latest 060701521359.dkr.ecr.ap-northeast-2.amazonaws.com/dev-auth:latest
         docker push 060701521359.dkr.ecr.ap-northeast-2.amazonaws.com/dev-auth:latest
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
